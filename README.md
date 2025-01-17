@@ -53,7 +53,7 @@ The following Python libraries are required to run the app:
   
 ##🖼️ Screenshot
 
-![App Screenshot](https://github.com/AdityaTagde/Dogs_Breed_classification/blob/main/Screenshot%202025-01-17%20234833.png)
+![App Screenshot](https://github.com/AdityaTagde/Dogs_Breed_classification/blob/main/Screenshot%202025-01-17%20235348.png)
 
 ![App Screenshot](https://github.com/AdityaTagde/Dogs_Breed_classification/blob/main/Screenshot%202025-01-17%20235417.png)
 
