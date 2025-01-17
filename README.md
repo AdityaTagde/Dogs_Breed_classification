@@ -49,3 +49,11 @@ The following Python libraries are required to run the app:
 ## 💡 Notes
 - The app uses a simple image classification model that accepts images of size 140x140 pixels. If your model requires a different input size, make sure to update the target_size in the app.py file accordingly.
 - The app uses static/uploads to save the uploaded images. Make sure the folder exists or is created when the app starts.
+
+  
+##🖼️ Screenshot
+
+![App Screenshot](https://github.com/AdityaTagde/Dogs_Breed_classification/blob/main/Screenshot%202025-01-17%20234833.png)
+
+![App Screenshot](https://github.com/AdityaTagde/Dogs_Breed_classification/blob/main/Screenshot%202025-01-17%20235417.png)
+
