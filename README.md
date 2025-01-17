@@ -36,7 +36,7 @@ Once the image is processed, the app will display the predicted breed and show t
 
 Here’s an overview of the project’s directory structure:
 dog-breed-classifier/
-![Alter]()
+![Alter](https://github.com/AdityaTagde/Dogs_Breed_classification/blob/main/Screenshot%202025-01-17%20234833.png)
 
 ## 🧩 Dependencies
 The following Python libraries are required to run the app:
