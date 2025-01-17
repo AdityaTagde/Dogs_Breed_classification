@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dog Breed Classifier</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            text-align: center;
+        }
+
+        h1 {
+            color: #4CAF50;
+        }
+
+        p {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+
+        .form-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+
+        label {
+            font-size: 1em;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        input[type="file"] {
+            width: 100%;
+            margin-bottom: 15px;
+            padding: 10px;
+            font-size: 1em;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 1.2em;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .image-preview {
+            margin-top: 20px;
+            display: none;
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #ddd;
+            padding: 10px;
+            border-radius: 8px;
+            background-color: #f4f4f4;
+        }
+
+        .image-preview img {
+            width: 100%;
+            height: auto;
+        }
+
+        /* Result Section */
+        .result-container {
+            margin-top: 30px;
+            display: none;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+
+        .result-container h2 {
+            font-size: 1.5em;
+            color: #4CAF50;
+        }
+
+        .result-container p {
+            font-size: 1.2em;
+            margin-top: 10px;
+        }
+
+        .loading {
+            font-size: 1.2em;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+    <h1>Dog Breed Classifier</h1>
+    <p>Upload an image of a dog and we'll try to predict its breed!</p>
+
+    <div class="form-container">
+        <!-- Form for image upload -->
+        <form id="uploadForm" action="/predict" method="post" enctype="multipart/form-data">
+            <label for="image">Choose an image</label>
+            <input type="file" id="image" name="image" accept="image/*" required>
+            <button type="submit" id="submitBtn">Upload and Predict</button>
+        </form>
+
+        <!-- Image preview -->
+        <div class="image-preview" id="imagePreview">
+            <h3>Image Preview:</h3>
+            <img id="previewImage" alt="Image Preview">
+        </div>
+    </div>
+
+    <!-- Prediction Result Section -->
+    <div class="result-container" id="resultContainer">
+        <h2>Predicted Breed:</h2>
+        <p id="predictionResult">Loading...</p>
+        <p class="loading" id="loadingMessage">Please wait while we analyze the image...</p>
+    </div>
+
+    <script>
+        // Preview the selected image before form submission
+        const imageInput = document.getElementById('image');
+        const previewImage = document.getElementById('previewImage');
+        const imagePreview = document.getElementById('imagePreview');
+        const resultContainer = document.getElementById('resultContainer');
+        const predictionResult = document.getElementById('predictionResult');
+        const loadingMessage = document.getElementById('loadingMessage');
+        const submitBtn = document.getElementById('submitBtn');
+
+        // Simulate the process of predicting the breed
+        imageInput.addEventListener('change', function (event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    previewImage.src = e.target.result;
+                    imagePreview.style.display = 'block';  // Show preview
+                    resultContainer.style.display = 'none'; // Hide the result container until after prediction
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        // Simulate the submission and prediction process
+        document.getElementById('uploadForm').addEventListener('submit', function (event) {
+            event.preventDefault(); // Prevent form submission for demo
+
+            // Show loading state
+            submitBtn.disabled = true;
+            loadingMessage.style.display = 'block';
+            resultContainer.style.display = 'none'; // Hide previous results
+
+            // Simulate a delay (e.g., waiting for server to process the image)
+            setTimeout(function () {
+                // Simulated prediction result
+                const simulatedBreed = "Golden Retriever"; // Replace this with the actual prediction from the backend
+
+                // Update the result section
+                predictionResult.textContent = simulatedBreed;
+                loadingMessage.style.display = 'none'; // Hide the loading message
+                resultContainer.style.display = 'block'; // Show result container
+                submitBtn.disabled = false; // Re-enable submit button after prediction
+            }, 3000); // 3 seconds delay for simulation
+        });
+    </script>
+</body>
+</html>
